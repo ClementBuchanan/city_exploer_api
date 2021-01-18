@@ -1,4 +1,4 @@
-# city_exploer_api
+# city_explorer_api
 
 # Project Name
 
