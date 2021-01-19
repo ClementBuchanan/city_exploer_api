@@ -7,7 +7,7 @@
 const express = require('express');
 const cors = require('cors');
 // const { response } = require('express');
-require ('dotenv').config();
+require('dotenv').config();
 
 // =====setup application (server) ========
 
@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3005;
 // response : data sent back to the client
 // response.send (<anything>): takes the argument and send it back to the client
 
-app.get ('/', (request, response) => {
+app.get('/', (request, response) => {
   response.send('You are here   ');
 });
 
@@ -60,7 +60,7 @@ app.get('/location', (req, res) => {
 
 // ===== Helper functions =====
 
-function Location(search_query, formatted_query, latitude, longitude){
+function Location(search_query, formatted_query, latitude, longitude) {
   this.search_query = search_query;
   this.longitude = longitude;
   this.latitude = latitude;
@@ -68,9 +68,29 @@ function Location(search_query, formatted_query, latitude, longitude){
 
 function newLocation(jsonObj) {
   this.location = jsonObj.location.name;
-  this.locality = jsonObj.location.location.locality_verbose;this.cuisine = jsonObj.restaurnt.cuisine;
+  this.locality = jsonObj.location.location.locality_verbose; this.cuisine = jsonObj.restaurnt.cuisine;
 }
+
+$('form:nth-of-type(2)').on('submit', event => {
+  event.preventDefault();
+  const cityName = $(`form:nth-of-type(2) input:first-of-type`).val();
+  console.log(cityName);
+
+  $.ajax(`${serverURL}/location?city=${cityName}`).then(gpsDataThatCameBack => {
+    // render map
+    gpsDataThatCameBack = {
+      'id': 1,
+      'search_query': 'seattle',
+      'formatted_query': 'Seattle, WA, USA',
+      'latitude': '47.606210',
+      'longitude': '122.332071',
+      'created_at': null
+    };
+    const imgString = `<img src = "images/map.png?lat=${gpsDataThatCameBack.latitude}&lng=${gpsDataThatCameBack.longitude}"/>`;
+    $('main').append(imgString);
+  });
+});
 
 // ===== Start the server =====
 
-app.listen(PORT, () => console.log (`You are on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`You are on PORT ${PORT}`));
