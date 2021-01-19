@@ -6,18 +6,19 @@
 
 const express = require('express');
 const cors = require('cors');
-const { response } = require('express');
+// const { response } = require('express');
 require ('dotenv').config();
 
 // =====setup application (server) ========
 
 const app = express(); // creates server from the Express library
-app.unsubscribe(cors()); app.use // loads the middleware. We are loadig cors so that requests don't get blocked.
+app.use(cors());
+// loads the middleware. We are loadig cors so that requests don't get blocked.
 
 // ===== Global variables =====
 // process.env.PORT references the the PORT env variable from the terminal
 
-const PORT = process.env.PORT || 2021 
+const PORT = process.env.PORT || 3005;
 
 // ===== Routes =====
 // app.get: attaches a listener of method type GET to the server with a (route and a callback)
@@ -37,21 +38,21 @@ app.get ('/', (request, response) => {
 // this lives with all the client data, in the `request (req)` parameter
 // inside request will always live a property  query: { name: 'rasta', lastName: 'dog' },
 
-app.get('/ pet-the-pet', (req, res) => {
-  console.log(req.query.name);
-  let str = '';
-  for(let i = 0; i < req.query.quantity, 1++) {
-    str += `petting${req.query.name} ${req.query.lastname} <br />`;
-  }
-  res.send(str);
-});
+// app.get('/ pet-the-pet', (req, res) => {
+//   console.log(req.query.name);
+//   let str = '';
+//   for(let i = 0; i < req.query.quantity, 1++) {
+//     str += `petting${req.query.name} ${req.query.lastname} <br />`;
+//   }
+//   res.send(str);
+// });
 
-app.get('restaurants', (req, res) => {
-  const data = require('./data/restauants.json');
+app.get('/location', (req, res) => {
+  const data = require('./data/location.json');
   const arr = [];
-  data.nearby_restaurants.forEach(jsonObj => {
-    const restauraant = new Restaurant(jsonObj);
-    arr.push(restaurant);
+  data.location.forEach(jsonObj => {
+    const location = new Location(jsonObj);
+    arr.push(location);
   });
 
   res.resend(arr);
@@ -65,9 +66,9 @@ function Location(search_query, formatted_query, latitude, longitude){
   this.latitude = latitude;
 }
 
-function Restaurant(jsonObj) {
-  this.restaurant = jsonObj.restaurant.name;
-  this.locality = jsonObj.restaurant.location.locality_verbose;this.cuisine = jsonObj.restaurnt.cuisine;
+function newLocation(jsonObj) {
+  this.location = jsonObj.location.name;
+  this.locality = jsonObj.location.location.locality_verbose;this.cuisine = jsonObj.restaurnt.cuisine;
 }
 
 // ===== Start the server =====
