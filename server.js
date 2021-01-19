@@ -71,25 +71,25 @@ function newLocation(jsonObj) {
   this.locality = jsonObj.location.location.locality_verbose; this.cuisine = jsonObj.restaurnt.cuisine;
 }
 
-$('form:nth-of-type(2)').on('submit', event => {
-  event.preventDefault();
-  const cityName = $(`form:nth-of-type(2) input:first-of-type`).val();
-  console.log(cityName);
+// $('form:nth-of-type(2)').on('submit', event => {
+//   event.preventDefault();
+//   const cityName = $(`form:nth-of-type(2) input:first-of-type`).val();
+//   console.log(cityName);
 
-  $.ajax(`${serverURL}/location?city=${cityName}`).then(gpsDataThatCameBack => {
-    // render map
-    gpsDataThatCameBack = {
-      'id': 1,
-      'search_query': 'seattle',
-      'formatted_query': 'Seattle, WA, USA',
-      'latitude': '47.606210',
-      'longitude': '122.332071',
-      'created_at': null
-    };
-    const imgString = `<img src = "images/map.png?lat=${gpsDataThatCameBack.latitude}&lng=${gpsDataThatCameBack.longitude}"/>`;
-    $('main').append(imgString);
-  });
-});
+//   $.ajax(`${serverURL}/location?city=${cityName}`).then(gpsDataThatCameBack => {
+//     // render map
+//     gpsDataThatCameBack = {
+//       'id': 1,
+//       'search_query': 'seattle',
+//       'formatted_query': 'Seattle, WA, USA',
+//       'latitude': '47.606210',
+//       'longitude': '122.332071',
+//       'created_at': null
+//     };
+//     const imgString = `<img src = "images/map.png?lat=${gpsDataThatCameBack.latitude}&lng=${gpsDataThatCameBack.longitude}"/>`;
+//     $('main').append(imgString);
+//   });
+// });
 
 // ===== Start the server =====
 
