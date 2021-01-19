@@ -1,0 +1,23 @@
+{
+  "name": "city_exploer_api",
+  "version": "1.0.0",
+  "description": "# Project Name",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClementBuchanan/city_exploer_api.git"
+  },
+  "author": "Clement Buchanan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClementBuchanan/city_exploer_api/issues"
+  },
+  "homepage": "https://github.com/ClementBuchanan/city_exploer_api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
