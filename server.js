@@ -28,68 +28,57 @@ const PORT = process.env.PORT || 3005;
 // response : data sent back to the client
 // response.send (<anything>): takes the argument and send it back to the client
 
-app.get('/', (request, response) => {
-  response.send('You are here   ');
+app.get('/', (req, res) => {
+  res.send(`<h1>This server is running on port ${PORT}</h1>`);
 });
 
-// localhost:3333/rasta-dog?name=rastaDog&lastName=dog
+
 // expect a key value pair of name:rasta and lastName:dog
 // send `rasta dog`
 // this lives with all the client data, in the `request (req)` parameter
 // inside request will always live a property  query: { name: 'rasta', lastName: 'dog' },
 
-// app.get('/ pet-the-pet', (req, res) => {
-//   console.log(req.query.name);
-//   let str = '';
-//   for(let i = 0; i < req.query.quantity, 1++) {
-//     str += `petting${req.query.name} ${req.query.lastname} <br />`;
-//   }
-//   res.send(str);
-// });
+
+// create a route with an end point of location
+// location request/send
 
 app.get('/location', (req, res) => {
-  const data = require('./data/location.json');
-  const arr = [];
-  data.location.forEach(jsonObj => {
-    const location = new Location(jsonObj);
-    arr.push(location);
+  res.send({
+    'search_query': 'seattle',
+    'formatted_query': 'Seattle, WA, USA',
+    'latitude': '47.606210',
+    'longitude': '-122.332071'
   });
+});
 
-  res.resend(arr);
+// ====== weather request/send ======
+app.get(`/weather`, (req, res) => {
+  const dummyWeatherData = [
+    {
+      "forecast": 'Its going to rain like it has never rained before.',
+      "time": 'Monday January 18 2021',
+    },
+    {
+      "forecast": 'Its going to be cloudy with a chance of meatballs.',
+      "time": 'Tuesday January 19 2021',
+    },
+  ];
+  // ====== return weather object ======
+  const arr = [];
+  dummyWeatherData.forEach(jsonObj => {
+    const weather = new weather(jsonObj);
+    arr.push(weather);
+  });
+  res.send(arr);
 });
 
 // ===== Helper functions =====
 
 function Location(search_query, formatted_query, latitude, longitude) {
   this.search_query = search_query;
-  this.longitude = longitude;
   this.latitude = latitude;
+  this.longitude = longitude;
 }
-
-function newLocation(jsonObj) {
-  this.location = jsonObj.location.name;
-  this.locality = jsonObj.location.location.locality_verbose; this.cuisine = jsonObj.restaurnt.cuisine;
-}
-
-// $('form:nth-of-type(2)').on('submit', event => {
-//   event.preventDefault();
-//   const cityName = $(`form:nth-of-type(2) input:first-of-type`).val();
-//   console.log(cityName);
-
-//   $.ajax(`${serverURL}/location?city=${cityName}`).then(gpsDataThatCameBack => {
-//     // render map
-//     gpsDataThatCameBack = {
-//       'id': 1,
-//       'search_query': 'seattle',
-//       'formatted_query': 'Seattle, WA, USA',
-//       'latitude': '47.606210',
-//       'longitude': '122.332071',
-//       'created_at': null
-//     };
-//     const imgString = `<img src = "images/map.png?lat=${gpsDataThatCameBack.latitude}&lng=${gpsDataThatCameBack.longitude}"/>`;
-//     $('main').append(imgString);
-//   });
-// });
 
 // ===== Start the server =====
 

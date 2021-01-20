@@ -22,3 +22,70 @@
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
+
+## Lab 06: Feature: 1
+
+Number and name of feature: __#1___WRRC_and function outline_____________
+
+Estimate of time needed to complete: __15 minutes___
+
+Start time: _3:45pm____
+
+Finish time: _4:00pm__
+
+Actual time needed to complete: _15mins____
+
+
+## Lab 06: Feature 2
+
+Number and name of feature: ___formal code review_____
+
+Estimate of time needed to complete: _15min____
+
+Start time: __4:00pm___
+
+Finish time: __4:15pm___
+
+Actual time needed to complete: __15min___
+
+# Lab 06: Comments
+
+This took me a very long time to complete due to a lack of understand how to do it. After asking Nicholas forsome clafification during class I was able to grasp it better allowing me to complete this section. I did a code review with Brendan Smith on his code after drawing the WRRC and I was able to understand it even more.
+
+
+## Lab 07: Feature: 1
+
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+## Lab 07: Feature 2
+
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+# Lab 07: Fearture 3
+
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
