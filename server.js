@@ -52,7 +52,7 @@ app.get('/location', (req, res) => {
 //   });
   if (!req.query.city) {
     res.status(500).send('Sorry, something went terribly wrong');
-  };
+  }
 });
 
 // ====== weather request/send ======
