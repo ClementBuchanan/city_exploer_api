@@ -2,17 +2,26 @@
 
 # Project Name
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: City Exploprer API
+**Version**: 1.3 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This is an app for someone interested in knowing l;ocations and weather conditions in any city.
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
+Steps to get started. Getting APIs formthese resources:
+
+1. Superagent Docs
+1. Location IQ Geocoding API - Specifically, the “Search Forward/GeoCoding” section
+1. Weather Bit API Doc
+
+
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+Built with javascript and jQuery
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
@@ -21,6 +30,7 @@
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+01-17-21 2:30pm started with some starter code
 -->
 
 ## Lab 06: Feature: 1
@@ -55,7 +65,7 @@ This took me a very long time to complete due to a lack of understand how to do 
 
 ## Lab 07: Feature: 1
 
-Number and name of feature: ________________________________
+Number and name of feature: _____Have not gotten sytarted on lab 07 yet___________________________
 
 Estimate of time needed to complete: _____
 

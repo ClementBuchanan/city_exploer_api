@@ -44,27 +44,27 @@ app.get('/', (req, res) => {
 // location request/send
 
 app.get('/location', (req, res) => {
-//   res.send({
-//     'search_query': 'seattle',
-//     'formatted_query': 'Seattle, WA, USA',
-//     'latitude': '47.606210',
-//     'longitude': '-122.332071'
-//   });
-  if (!req.query.city) {
-    res.status(500).send('Sorry, something went terribly wrong');
-  }
+  console.log(req.query.city);
+  res.send({
+    'search_query': 'seattle',
+    'formatted_query': 'Seattle, WA, USA',
+    'latitude': '47.606210',
+    'longitude': '-122.332071'
+  });
+  // if (!req.query.city) {
+  //   res.status(500).send('Sorry, something went terribly wrong');
 });
 
 // ====== weather request/send ======
-app.get(`/weather`, (req, res) => {
+app.get('/weather', (req, res) => {
   const dummyWeatherData = [
     {
-      "forecast": 'Its going to rain like it has never rained before.',
-      "time": 'Monday January 18 2021',
+      'forecast': 'Its going to rain like it has never rained before.',
+      'time': 'Monday January 18 2021',
     },
     {
-      "forecast": 'Its going to be cloudy with a chance of meatballs.',
-      "time": 'Tuesday January 19 2021',
+      'forecast': 'Its going to be cloudy with a chance of meatballs.',
+      'time': 'Tuesday January 19 2021',
     },
   ];
   // ====== return weather object ======
@@ -74,6 +74,10 @@ app.get(`/weather`, (req, res) => {
     arr.push(weather);
   });
   res.send(arr);
+  // if (!req.query.city) {
+  //   res.status(500).send('Sorry, something went terribly wrong');
+  //   return;
+  // }
 });
 
 // ===== Helper functions =====
@@ -87,3 +91,14 @@ function Location(search_query, formatted_query, latitude, longitude) {
 // ===== Start the server =====
 
 app.listen(PORT, () => console.log(`You are on PORT ${PORT}`));
+
+// ===== Error handling function ======
+
+// if (!req.query.city) {
+//   res.status(500).send('Sorry, something went terribly wrong');
+//   return;
+// }
+
+// ====== return to normal with Location function ======
+// const dataArrayfromJsonLocation = require('./data/location.json');
+// const dataFromJsonLocation = dataArrayFromJsonLocation[0];
