@@ -43,12 +43,15 @@ app.get('/', (req, res) => {
 // location request/send
 
 app.get('/location', (req, res) => {
-  res.send({
-    'search_query': 'seattle',
-    'formatted_query': 'Seattle, WA, USA',
-    'latitude': '47.606210',
-    'longitude': '-122.332071'
-  });
+//   res.send({
+//     'search_query': 'seattle',
+//     'formatted_query': 'Seattle, WA, USA',
+//     'latitude': '47.606210',
+//     'longitude': '-122.332071'
+//   });
+  if (!req.query.city) {
+    res.status(500).send('Sorry, something went terribly wrong');
+  };
 });
 
 // ====== weather request/send ======
