@@ -3,7 +3,9 @@
 # Project Name
 
 **Author**: City Exploprer API - lab 08
+
 **Version**: 1.0 (starting lab 08)
+
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) --> This is an app for allowing someone to search weather conditions in any city.
@@ -13,6 +15,7 @@
 
 Steps to get started:
 
+
 ### For lab-08
 
 1. .env - with your PORT and API keys. Make sure this file is in your 
@@ -21,7 +24,6 @@ Steps to get started:
 1. .gitignore - with standard NodeJS configurations
 1. .eslintrc.json - with Code 301 course standards for the linter
 1. package.json - with all dependencies and any associated details related to configuration
-
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
@@ -66,6 +68,44 @@ Actual time needed to complete: __15min___
 
 I have not completed this lab because I've not yet completed lab-07.
 
+
+
+## Lab 08: Feature: 1
+
+Number and name of feature: _____Have not gotten sytarted on lab 07 yet___________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+## Lab 08: Feature 2
+
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+# Lab 08: Fearture 3
+
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
 
 ## Lab 08: Feature: 1
 
