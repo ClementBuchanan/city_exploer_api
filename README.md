@@ -1,4 +1,4 @@
-# city_explorer_api
+# City Explorer API - Persistence with a SQL database
 
 # Project Name
 
@@ -6,14 +6,14 @@
 **Version**: 1.0 (starting lab 08)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) --> This is an app for allowing someone to search weather conditions in any city.
+This is an app for allowing someone to search weather conditions in any city.
+
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
-Steps to get started:
+Steps to get started for lab-08
 
-### For lab-08
+For this lab assignment, I will create a SQL database that the server will connect to in order to store and retrieve location information.
 
 1. .env - with your PORT and API keys. Make sure this file is in your 
 1. .gitignore so your keys are not pushed to GitHub.
@@ -21,11 +21,29 @@ Steps to get started:
 1. .gitignore - with standard NodeJS configurations
 1. .eslintrc.json - with Code 301 course standards for the linter
 1. package.json - with all dependencies and any associated details related to configuration
+1. schema.sql - file is added in this phase of the build
 
+The configuration tree looks like this:
+
+lab-08-repository
+   ├── .env
+   ├── .eslintrc.json
+   ├── .gitignore
+   ├── package-lock.json
+   ├── package.json
+   ├── schema.sql
+   └── server.js
+
+When completed site will be deployed to Heroku
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-Built with javascript and jQuery with a SQL database and hosted on Heroku server.
+
+Built with javascript and jQuery with a SQL database and hosted on Heroku server. Rresources used for building this app are: 
+
+* SQL Syntax Cheatsheet
+* PostgreSQL Shell Cheatsheet
+* PostgreSQL Docs
+* Heroku Postgres Docs
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
@@ -34,7 +52,7 @@ Built with javascript and jQuery with a SQL database and hosted on Heroku server
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-01-17-21 2:30pm started with some starter code
+01-22-21 2:30pm started with some starter code
 -->
 
 ## Lab 06: Feature: 1
