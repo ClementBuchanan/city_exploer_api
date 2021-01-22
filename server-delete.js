@@ -39,15 +39,15 @@ app.get('/', (req, res) => {
 
 function locationHandler(req, res) {
   const searchedCity = req.query.city;
-  console.log(req.query);
+  // console.log(req.query);
   const key = process.env.LOCATION_API_KEY;
   const url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchedCity}&format=json`;
 
   superagent.get(url)
     .then(result => {
-    console.log(result.body[0]);
+    // console.log(result.body[0]);
     const newLocation = new Location(result.body[0], searchedCity);
-    // console.log(newLocation);
+    console.log(newLocation);
       // const location = result.body[0];
       // const newLocation = new Location(
       //   searchedCity,
@@ -106,7 +106,7 @@ app.get(`/parks`, (req, res) => {
   const key = process.env.PARKS_API_KEY;
   const parkName = req.query.parkName;
   const parkLocation = req.query.parkLocation;
-  // console.log('000000000', req.query);
+  console.log('000000000', req.query);
   const url = `https://${key}@developer.nps.gov/api/v1/parks?parkCode=acad?${parkName}&parkLocation=${parkLocation}`;
   superagent.get(url)
     .then(result => {
