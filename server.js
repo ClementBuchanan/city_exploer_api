@@ -34,6 +34,7 @@ function locationHandler(req, res) {
       console.log(result.body[0]);
       const newLocation = new Location(result.body[0], searchedCity);
       console.log(newLocation);
+
       res.send(newLocation);
     })
     .catch(error => {
