@@ -7,6 +7,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const pg = require('pg');
 // const { response } = require('express');
 require('dotenv').config();
 
@@ -45,13 +46,9 @@ app.get('/', (req, res) => {
 // location request/send
 app.get('/location', (req, res) => {
 
-
-  // we need to normalize our data with a constructor
   const newLocation = require('./data/location.json'); // require gets things from a fle
   const location = newLocation[0];
-
-  // data from the client (search query they submitted)
-  console.log('req.query', req.query);
+  DATABASE_URL = process.env.DATABASE_URL;
 
   const searchedCity = req.query.city;
   const site = new Location(searchedCity,
