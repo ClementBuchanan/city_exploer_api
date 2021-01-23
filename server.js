@@ -6,15 +6,19 @@
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
+const pg = require('pg');
 
 require('dotenv').config();
 
 // =====setup application (server) ========
 
-const app = express(); 
+const app = express();
 app.use(cors());
 
 const PORT = process.env.PORT || 2021;
+const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', err => console.error(err));
+
 
 // ===== Routes =====
 
@@ -29,13 +33,27 @@ function locationHandler(req, res) {
   console.log(req.query);
   const key = process.env.LOCATION_API_KEY;
   const url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchedCity}&format=json`;
-  superagent.get(url)
-    .then(result => {
-      console.log(result.body[0]);
-      const newLocation = new Location(result.body[0], searchedCity);
-      console.log(newLocation);
 
-      res.send(newLocation);
+  const sqlContainment = 'SELECT * FROM city WHERE search_query=$1;';
+  const sqlArray = [searchedCity];
+  client.query(sqlContainment, sqlArray)
+    .then(results => {
+      if (results.rows.length > 0) {
+        console.log('This information came the database');
+        res.send(results.rows[0]);
+      }
+      else {
+        superagent.get(url)
+          .then(result => {
+            console.log(result.body[0]);
+            const newLocation = new Location(result.body[0], searchedCity);
+            console.log(newLocation);
+            const sqlStatement = 'INSERT INTO city (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4);';
+            const valArray = [newLocation.search_query, newLocation.formatted_query, newLocation.latitude, newLocation.longitude];
+            client.query(sqlStatement, valArray);
+            res.send(newLocation);
+          })
+      }
     })
     .catch(error => {
       res.status(500).send('please enter a city in the search field');
@@ -114,4 +132,9 @@ function Park(obj) {
 
 // ===== Start the server =====
 
-app.listen(PORT, () => console.log(`You are on PORT ${PORT}`));
+client.connect()
+  .then(() => {
+    app.listen(PORT, () => console.log(`You are on PORT ${PORT}`));
+  });
+
+
