@@ -21,7 +21,6 @@ This is an app for allowing someone to search weather conditions in any city.
 
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 
 ## Steps to get started
@@ -34,6 +33,18 @@ __Configuration__
 1. .gitignore - with standard NodeJS configurations
 1. .eslintrc.json - with Code 301 course standards for the linter
 1. package.json - with all dependencies and any associated details related to configuration
+1. schema.sql - file is added in this phase of the build
+
+The configuration tree looks like this:
+
+lab-08-repository
+   ├── .env
+   ├── .eslintrc.json
+   ├── .gitignore
+   ├── package-lock.json
+   ├── package.json
+   ├── schema.sql
+   └── server.js
 
 __Getting APIs form these resources:__
 
@@ -73,7 +84,7 @@ Built with javascript and jQuery on a SQL db. Hosted on Heroku server. On the fr
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-01-17-21 2:30pm started with some starter code
+01-22-21 2:30pm started with some starter code
 -->
 
 ## Lab 09: Feature: 1

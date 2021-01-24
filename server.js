@@ -13,7 +13,7 @@ require('dotenv').config();
 // =====setup application (server) ========
 
 const app = express();
-app.use(cors());
+app.use(cors())
 const PORT = process.env.PORT || 2021;
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', err => console.error(err));
@@ -24,8 +24,6 @@ client.on('error', err => console.error(err));
 app.get('/', (req, res) => {
   res.send(`<h1>This server is running on port ${PORT}</h1>`);
 });
-
-// ====== location superagent & request/send  ======
 
 function locationHandler(req, res) {
   const searchedCity = req.query.city;
@@ -42,14 +40,14 @@ function locationHandler(req, res) {
       }
       else {
         superagent.get(url)
-          .set('user-key', apikey)
           .then(result => {
+            console.log(result.body[0]);
             const newLocation = new Location(result.body[0], searchedCity);
+            console.log(newLocation);
             const sqlStatement = 'INSERT INTO city (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4);';
             const valArray = [newLocation.search_query, newLocation.formatted_query, newLocation.latitude, newLocation.longitude];
             client.query(sqlStatement, valArray);
             res.send(newLocation);
-          });
       }
     })
     .catch(error => {
@@ -69,6 +67,7 @@ app.get(`/weather`, (req, res) => {
   superagent.get(url)
     .then(result => {
       const newArray = result.body.data.map(weather => {
+        console.log(weather);
         const forecast = weather.weather.description;
         const time = weather.ts;
         return new Weather(forecast, time);
@@ -150,7 +149,6 @@ function yelpHandler(req, res) {
 }
 app.get('/yelp', (req, res) => yelpHandler(req, res));
 
-
 // ===== Helper functions =====
 
 function Location(obj, searchedCity) {
@@ -172,6 +170,7 @@ function Park(obj) {
   this.fee = obj.entranceFees[0].cost;
   this.description = obj.description;
   this.url = obj.url;
+
 }
 
 function Movie(obj) {
@@ -190,6 +189,7 @@ function Yelp(obj) {
   this.price = obj.price;
   this.rating = obj.rating;
   this.url = obj.url;
+
 }
 
 // ===== Start the server =====
