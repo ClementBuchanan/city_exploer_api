@@ -14,7 +14,6 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
-
 const PORT = process.env.PORT || 2021;
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', err => console.error(err));
@@ -26,11 +25,12 @@ app.get('/', (req, res) => {
   res.send(`<h1>This server is running on port ${PORT}</h1>`);
 });
 
-// ====== superagent & location request/send  ======
+// ====== location superagent & request/send  ======
 
 function locationHandler(req, res) {
   const searchedCity = req.query.city;
   console.log(req.query);
+  const apikey = process.env.ZAMATO_API_KEY;
   const key = process.env.LOCATION_API_KEY;
   const url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchedCity}&format=json`;
 
@@ -44,6 +44,7 @@ function locationHandler(req, res) {
       }
       else {
         superagent.get(url)
+          .set('user-key', apikey)
           .then(result => {
             console.log(result.body[0]);
             const newLocation = new Location(result.body[0], searchedCity);
@@ -52,7 +53,7 @@ function locationHandler(req, res) {
             const valArray = [newLocation.search_query, newLocation.formatted_query, newLocation.latitude, newLocation.longitude];
             client.query(sqlStatement, valArray);
             res.send(newLocation);
-          })
+          });
       }
     })
     .catch(error => {
@@ -71,14 +72,12 @@ app.get(`/weather`, (req, res) => {
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&hours=24&key=${key}&units=I`;
   superagent.get(url)
     .then(result => {
-
       const newArray = result.body.data.map(weather => {
         console.log(weather);
         const forecast = weather.weather.description;
         const time = weather.ts;
         return new Weather(forecast, time);
       });
-
       console.log(newArray);
       res.send(newArray);
     })
@@ -88,9 +87,10 @@ app.get(`/weather`, (req, res) => {
     });
 });
 
-// ====== Trails request/send ======
+// ====== Parks superagent & request/send ======
 
-app.get(`/parks`, (req, res) => {
+function parksHandler(req, res) {
+  // app.get(`/parks`, (req, res) => {
   const key = process.env.PARKS_API_KEY;
   const url = `https://developer.nps.gov/api/v1/parks?q=${req.query.search_query}&api_key=${key}`;
   superagent.get(url)
@@ -105,7 +105,66 @@ app.get(`/parks`, (req, res) => {
       res.status(500).send('please enter a city in the search field');
       console.log(error);
     });
+}
+app.get('/parks', (req, res) => parksHandler(req, res));
+
+
+// ======= Movies superagent & request/send ==========
+
+app.get(`/movies`, (req, res) => {
+  const mkey = process.env.MOVIE_API_KEY;
+  const title = req.query.title;
+  const overview = req.query.overview;
+  const average_votes = req.query.average_votes;
+  const total_votes = req.query.total_votes;
+  const popularity = req.query.popularity;
+  const released_on = req.query.released_on;
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&hours=24&key=${key}&units=I`;
+  superagent.get(url)
+    .then(result => {
+      if (results.rows.length <= 20) {
+        console.log('The twenty most polular movies in the area');
+        res.send(results.rows[0]);
+      const moviesArray = result.body.data.map(movies => {
+        console.log(movies);
+        const forecast = weather.weather.description;
+        const time = movies.ts;
+        return new Movies(forecast, time);
+      });
+      console.log(moviesArray);
+      res.send(moviesArray);
+    })
+    .catch(error => {
+      res.status(500).send('please enter a movie in the search field');
+      console.log(error);
+    });
 });
+
+
+// ======== Yelp superagent &  request/send ========
+
+app.get(`/weather`, (req, res) => {
+  const key = process.env.WEATHER_API_KEY;
+  const latitude = req.query.latitude;
+  const longitude = req.query.longitude;
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&hours=24&key=${key}&units=I`;
+  superagent.get(url)
+    .then(result => {
+      const newArray = result.body.data.map(weather => {
+        console.log(weather);
+        const forecast = weather.weather.description;
+        const time = weather.ts;
+        return new Weather(forecast, time);
+      });
+      console.log(newArray);
+      res.send(newArray);
+    })
+    .catch(error => {
+      res.status(500).send('please enter a city in the search field');
+      console.log(error);
+    });
+});
+
 
 // ===== Helper functions =====
 
@@ -128,6 +187,16 @@ function Park(obj) {
   this.fee = obj.entranceFees[0].cost;
   this.description = obj.description;
   this.url = obj.url;
+}
+
+function Movie(forecast, time) {
+  this.forecast = forecast;
+  this.time = new Date(time * 1000).toDateString();
+}
+
+function Yelp(forecast, time) {
+  this.forecast = forecast;
+  this.time = new Date(time * 1000).toDateString();
 }
 
 // ===== Start the server =====
