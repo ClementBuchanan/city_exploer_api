@@ -1,16 +1,16 @@
 
+
 # Project Name: City Explorer API
 
 **Author**: Clement Buchanan
 **Version**: 1.0
 
 ## Overview
+
 This is an app for allowing someone to search a city and get information on weather conditions, parks, movies and restaurants in that city.
 I will begin building an API server, which will provide data for the City Explorer Application, allowing a user to search for a location, present a Map, as well as interesting information about the area, all using data from APIs that your server will fetch and manage.
 
 ## Getting Started
-
-Steps to get started:
 
 1. **data directory** - with a location.json and a weather.jason file.
 1. **.env** - with PORT 2021 number. This file is in the .gitignore so the keys will not be pushed to GitHub.
@@ -26,8 +26,21 @@ Resources include:
 1. Express JS Docs
 1. dotenv Docs
 
-The repo tree will look like this:
+## Steps to get started
 
+__Configuration__
+
+1. .env - with your PORT and API keys. Make sure this file is in your
+1. .gitignore so your keys are not pushed to GitHub.
+1. README.md - with documentation regarding lab and its current state of development.
+1. .gitignore - with standard NodeJS configurations
+1. .eslintrc.json - with Code 301 course standards for the linter
+1. package.json - with all dependencies and any associated details related to configuration
+1. schema.sql - file is added in this phase of the build
+
+The configuration tree looks like this:
+
+lab-06-repository
 ├── data
    |     ├── weather.json
    |     └── location.json
@@ -40,7 +53,7 @@ The repo tree will look like this:
 
 ## Architecture
 
-Built with javascript and jQuery with a SQL database and hosted on Heroku server. The application will use  Express and jQuery libraries.
+Built with javascript and jQuery on a SQL db. Hosted on Heroku server. The application will use Express and jQuery libraries. On the front-end the user will enter their request and the app will display information based on the city requested.
 
 ## Change Log
 
