@@ -48,6 +48,7 @@ function locationHandler(req, res) {
             const valArray = [newLocation.search_query, newLocation.formatted_query, newLocation.latitude, newLocation.longitude];
             client.query(sqlStatement, valArray);
             res.send(newLocation);
+          })
       }
     })
     .catch(error => {
