@@ -1,5 +1,3 @@
-# City Explorer API
-
 # Project Name: City Explorer API
 
 **Author**: Clement Buchanan
@@ -7,22 +5,23 @@
 
 ## Overview
 
-This is an app that will allow someone to check on the weather condition in any city. For this lab assignment, I will use the latitude and longitude to request information about movies related to the area, yelp info, and events near the location.
-
-I will also be using modularization and functional programming principles to refactor and modularize this application for readability
-
-**Author**: City Exploprer API - lab 09
-
-**Version**: 1.0 
-
-## Overview
-
-This is an app for allowing someone to search weather conditions in any city.
-
+This is an app for allowing someone to search a city and get information on weather conditions, parks, movies and restaurants in that city. I will begin building an API server, which will provide data for the City Explorer Application, allowing a user to search for a location, present a Map, as well as interesting information about the area, all using data from APIs that your server will fetch and manage.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
+1. **data directory** - with a location.json and a weather.jason file.
+1. **.env** - with PORT 2021 number. This file is in the .gitignore so the keys will not be pushed to GitHub.
+1. **README.md** - with documentation regarding your lab and its current state of development.
+1. **.gitignore** - with standard NodeJS configurations
+1. **.eslintrc.json** - with Code 301 course standards for the linter
+1. **package.json** - with all dependencies and any associated details related to configuration. The dependencies needed for today’s lab include: express, cors, and dotenv.
+
+Resources include:
+
+1. Node JS Docs
+1. NPM JS Docs
+1. Express JS Docs
+1. dotenv Docs
 
 ## Steps to get started
 
@@ -34,89 +33,58 @@ __Configuration__
 1. .gitignore - with standard NodeJS configurations
 1. .eslintrc.json - with Code 301 course standards for the linter
 1. package.json - with all dependencies and any associated details related to configuration
+1. schema.sql - file is added in this phase of the build
 
-__Getting APIs form these resources:__
+The configuration tree looks like this:
 
-* SQL Syntax Cheatsheet
-* PostgreSQL Shell Cheatsheet
-* PostgreSQL Docs
-* Yelp API Docs
-* The Movie DB API Docs
-* National Park Service API Docs
-
-
-### For lab-09
-
-For lab-09 a schema.sql file must be added to the data folder. The file tree should look like this:
-
- lab-09-repository
-   ├── data
-   |    └── schema.sql
+lab-06-repository
+├── data
+   |     ├── weather.json
+   |     └── location.json
    ├── .env
    ├── .eslintrc.json
    ├── .gitignore
    ├── package-lock.json
    ├── package.json
    └── server.js
-   ├── modules
-   |    └── location.js
-   |    └── weather.js 
 
 ## Architecture
 
-Built with javascript and jQuery on a SQL db. Hosted on Heroku server. On the front-end the user will enter their request and the app will display information based on the city requested.
+Built with javascript and jQuery on a SQL db. Hosted on Heroku server. The application will use Express and jQuery libraries. On the front-end the user will enter their request and the app will display information based on the city requested.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
+01-18-2021 6:59pm - I started buiding out the framework of this project with some starter code.
+01-23-2021 6:18pm - Project is now completed.
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-01-17-21 2:30pm started with some starter code
--->
+
+With much help from Chance the TA I was able to this lab completed.
 
 ## Lab 09: Feature: 1
 
-Number and name of feature: __I have not yet started on this lab but will do so by Sunday________
+Number and name of feature: __#1___WRRC_and function outline was sent in with the first submission
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: __60 minutes___
 
-Start time: _____
+Start time: _5:30 pm____
 
-Finish time: _____
+Finish time: _5:45pm__
 
-Actual time needed to complete: _____
-
+Actual time needed to complete: _15 minutes____
 
 ## Lab 09: Feature 2
 
-Number and name of feature: ________________________________
+Number and name of feature: ___formal code review_____
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _15min____
 
-Start time: _____
+Start time: __4:00pm___
 
-Finish time: _____
+Finish time: __4:15pm___
 
-Actual time needed to complete: _____
+Actual time needed to complete: __15min___
 
-# Lab 09: Fearture 3
+# Lab 09: Comments
 
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-# Code review
-
-I will do a formal code review when the lab is completed
-
-
-__Comments__
-
+When doing the code review there were some code I  did not understand but my review partner was able to help me understand them
