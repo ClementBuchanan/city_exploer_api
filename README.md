@@ -61,7 +61,7 @@ Built with javascript and jQuery on a SQL db. Hosted on Heroku server. The appli
 
 With much help from Chance the TA I was able to this lab completed.
 
-## Lab 06: Feature: 1
+## Lab 09: Feature: 1
 
 Number and name of feature: __#1___WRRC_and function outline was sent in with the first submission
 
@@ -73,7 +73,7 @@ Finish time: _5:45pm__
 
 Actual time needed to complete: _15 minutes____
 
-## Lab 06: Feature 2
+## Lab 09: Feature 2
 
 Number and name of feature: ___formal code review_____
 
@@ -85,6 +85,6 @@ Finish time: __4:15pm___
 
 Actual time needed to complete: __15min___
 
-# Lab 06: Comments
+# Lab 09: Comments
 
-When doing the code review there were some code I  did not understand but my review partner was able to help me understand.
+When doing the code review there were some code I  did not understand but my review partner was able to help me understand them
